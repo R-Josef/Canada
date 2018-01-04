@@ -1,0 +1,6 @@
+name: Canada
+main: cn.slfeng.canada.Canada
+version: 0.0.1
+commands:
+  ca:
+     description: Canada的主要指令.
