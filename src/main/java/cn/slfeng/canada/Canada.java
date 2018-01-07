@@ -14,6 +14,7 @@ public final class Canada extends JavaPlugin {
     private static Economy econ = null;
     private static Permission perms = null;
     private static Chat chat = null;
+    private static Canada instance;
     
     @Override
     public void onDisable() {
@@ -27,6 +28,7 @@ public final class Canada extends JavaPlugin {
             getServer().getPluginManager().disablePlugin(this);
             return;
         }
+        instance = this;
         setupPermissions();
         setupChat();
         Random.Cycle();// 开始开奖任务
@@ -54,5 +56,8 @@ public final class Canada extends JavaPlugin {
         RegisteredServiceProvider<Permission> rsp = getServer().getServicesManager().getRegistration(Permission.class);
         perms = rsp.getProvider();
         return perms != null;
+    }
+    public static Canada getInstance(){
+        return instance;
     }
 }

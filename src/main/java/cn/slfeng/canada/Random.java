@@ -10,7 +10,7 @@ import net.milkbowl.vault.economy.Economy;
 
 public class Random {
 	private static Economy econ = null;
-	static Canada plugin;
+	private static Canada plugin = Canada.getInstance();
 	public static int result;// 上把结果
 	public static Map<String, Boolean> property = new HashMap<>();// 结果的属性
 
