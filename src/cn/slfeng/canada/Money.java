@@ -14,17 +14,19 @@ import org.bukkit.entity.Player;
 import net.milkbowl.vault.economy.Economy;
 
 public class Money implements CommandExecutor {
+	public final Canada plugin;
 
 	private static Economy econ = null;
 
 	public Money(Canada plugin) {
+		this.plugin = plugin;
 		plugin.getServer().getPluginCommand("ca").setExecutor(this);
 	}
 
 	public static Map<String, Integer> money = new HashMap<>();// 玩家押的钱
 	public static Map<String, String> jieguo = new HashMap<>();// 玩家赌的结果
 	public static Map<String, UUID> uuid = new HashMap<String, UUID>();// 玩家的UUID
-
+	
 	public boolean CheckAndSave(CommandSender sender, String[] args) {
 		if (Pattern.compile("^[-\\+]?[\\d]*$").matcher(args[0]).matches() && Integer.parseInt(args[0]) > 0) {// 如果子命令1是整数且大于0
 			OfflinePlayer offp = (OfflinePlayer) sender;
@@ -46,7 +48,7 @@ public class Money implements CommandExecutor {
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		if (args[0] == "reload") {
-			sender.sendMessage("已重置插件");
+
 		} else if (args[1] == "押") {
 			if (args[2] == "大" || args[2] == "小" || args[2] == "单" || args[2] == "双" || args[2] == "大双"
 					|| args[2] == "小双" || args[2] == "大单" || args[2] == "小单") {

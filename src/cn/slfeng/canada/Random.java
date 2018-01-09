@@ -10,7 +10,7 @@ import net.milkbowl.vault.economy.Economy;
 
 public class Random {
 	private static Economy econ = null;
-	private static Canada plugin = new Canada();
+	static Canada plugin;
 	public static int result;// 上把结果
 	public static Map<String, Boolean> property = new HashMap<>();// 结果的属性
 
@@ -59,13 +59,13 @@ public class Random {
 		}
 		return dx + ds;
 	}
-
+	
 	public static void Cycle() {// 循环开奖
 		plugin.getLogger().info("循环开奖已启动");
-		new BukkitRunnable() {
+		new BukkitRunnable(){
 			@Override
-			public void run() {
-				result = random();// 将random()放进result
+		    public void run(){
+		    	result = random();// 将random()放进result
 				compute();// 执行结果分析
 				String jg = integrate();
 				Bukkit.broadcastMessage("[加拿大]" + "上把结果已出:" + result);
@@ -107,7 +107,7 @@ public class Random {
 				} else {
 					Bukkit.broadcastMessage("上把无人下注");
 				}
-			}
-		}.runTaskTimerAsynchronously(plugin, 30 * 20L, 180 * 20L);
+		    }
+		}.runTaskTimerAsynchronously(plugin, 30*20L, 180*20L);
 	}
 }
